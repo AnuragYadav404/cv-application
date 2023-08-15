@@ -2,8 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import PersonalDetailsForm from "./components/PersonalDetails";
 import DisplayPersonalDetails from "./components/DisplayPersonalDetails";
-import WorkExperience from "./components/WorkExperience";
-import DisplayWorkExperience from "./components/DisplayWorkExperience";
 // import { Fragment } from "react";
 import ExperienceDetails from "./components/ExperienceDetails";
 import DisplayExperienceDetails from "./components/DisplayExperienceDetails";
@@ -14,8 +12,8 @@ function App() {
   const [phone, setPhone] = useState("");
   const [currentAddress, setCurrentAddress] = useState("");
   // const [experience, setExperience] = useState([]);
-  const [experience, setExperience] = useState(initialWorkExp);
-  const [education, setEducation] = useState(initialEducation)
+  const [work, setWork] = useState(initialWorkExp);
+  const [education, setEducation] = useState(initialEducation);
   // console.log("App education is : ", education)
   return (
     <div className="mainDiv">
@@ -36,10 +34,41 @@ function App() {
         phone={phone}
         currentAddress={currentAddress}
       />
-      <WorkExperience experience={experience} setExperience={setExperience} />
-      <DisplayWorkExperience experience={experience} />
-      <ExperienceDetails experienceName="EducationDetails" experience={education} setExperience={setEducation} title={"instituteName"} titleLabel={"Institute: "} subtitle={"course"} subtitleLabel={"Course: "}/>
-      <DisplayExperienceDetails experienceName="EducationDetails" experience={education} title={"instituteName"} titleLabel={"Institute: "} subtitle={"course"} subtitleLabel={"Course: "}/>
+      <ExperienceDetails
+        experienceName="ExperienceDetails"
+        experience={work}
+        setExperience={setWork}
+        title={"companyName"}
+        titleLabel={"Company: "}
+        subtitle={"role"}
+        subtitleLabel={"Role: "}
+      />
+      <DisplayExperienceDetails
+        experienceName="ExperienceDetails"
+        experience={work}
+        title={"companyName"}
+        titleLabel={"Company: "}
+        subtitle={"role"}
+        subtitleLabel={"Role: "}
+      />
+
+      <ExperienceDetails
+        experienceName="EducationDetails"
+        experience={education}
+        setExperience={setEducation}
+        title={"instituteName"}
+        titleLabel={"Institute: "}
+        subtitle={"course"}
+        subtitleLabel={"Course: "}
+      />
+      <DisplayExperienceDetails
+        experienceName="EducationDetails"
+        experience={education}
+        title={"instituteName"}
+        titleLabel={"Institute: "}
+        subtitle={"course"}
+        subtitleLabel={"Course: "}
+      />
     </div>
   );
 }
@@ -83,6 +112,6 @@ let initialEducation = [
     yearFrom: 2019,
     yearTo: 2023,
   },
-]
+];
 
 export default App;
