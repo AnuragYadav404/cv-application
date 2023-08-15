@@ -1,0 +1,22 @@
+
+.mainDiv {
+  display: flex;
+}
+
+.personalDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px;
+  padding: 16px;
+  min-width: 300px;
+  text-align: left;
+}
+
+.workExperience {
+  max-width: 200px;
+}
+
+.expItem {
+  max-width: 100px;
+}
