@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 export default function WorkExperience({ experience, setExperience }) {
   // const [experience, setExperience] = euseState(initialWorkExp);
   const [newCompany, setNewCompany] = useState("");
+  const [newRole, setNewRole] = useState("");
   const [newYearFrom, setNewYearFrom] = useState("");
   const [newYearTo, setNewYearTo] = useState("");
 
@@ -14,6 +15,21 @@ export default function WorkExperience({ experience, setExperience }) {
           return {
             ...exp,
             companyName: newName,
+          };
+        } else {
+          return exp;
+        }
+      })
+    );
+  }
+
+  function handleRoleChange(newRole, id) {
+    setExperience(
+      experience.map((exp) => {
+        if (exp.id === id) {
+          return {
+            ...exp,
+            role: newRole,
           };
         } else {
           return exp;
@@ -46,17 +62,20 @@ export default function WorkExperience({ experience, setExperience }) {
     if (
       newCompany.length > 0 &&
       newYearFrom.length > 0 &&
-      newYearTo.length > 0
+      newYearTo.length > 0 &&
+      newRole.length>0
     ) {
       let newId = newCompany + "@" + newYearFrom + newYearTo;
       let newExp = {
         id: newId,
         companyName: newCompany,
+        role: newRole,
         yearFrom: newYearFrom,
         yearTo: newYearTo,
       };
       setExperience([...experience, newExp]);
       setNewCompany("");
+      setNewRole("")
       setNewYearFrom("");
       setNewYearTo("");
     }
@@ -68,15 +87,23 @@ export default function WorkExperience({ experience, setExperience }) {
         {experience.map((exp) => {
           return (
             <li key={exp.id}>
-              <label htmlFor={exp.id+exp.companyName}>Company Name: </label>
+              <label htmlFor={exp.id + exp.companyName}>Company Name: </label>
               <input
                 type="text"
-                id={exp.id+exp.companyName}
+                id={exp.id + exp.companyName}
                 placeholder="Company Name"
                 value={exp.companyName}
                 onChange={(e) =>
                   handleCompanyNameChange(e.target.value, exp.id)
                 }
+              />
+              <label htmlFor={exp.id + exp.role}>Role: </label>
+              <input
+                type="text"
+                id={exp.id + exp.role}
+                placeholder="Role"
+                value={exp.role}
+                onChange={(e) => handleRoleChange(e.target.value, exp.id)}
               />
               <label htmlFor={exp.id + exp["yearFrom"]}>From: </label>
               <input
@@ -88,10 +115,10 @@ export default function WorkExperience({ experience, setExperience }) {
                   handleYearChange("yearFrom", e.target.value, exp.id)
                 }
               />
-              <label htmlFor={exp.id+exp["yearTo"]}>To: </label>
+              <label htmlFor={exp.id + exp["yearTo"]}>To: </label>
               <input
                 type="text"
-                id={exp.id+exp["yearTo"]}
+                id={exp.id + exp["yearTo"]}
                 placeholder="End Year"
                 value={exp.yearTo}
                 onChange={(e) =>
@@ -113,6 +140,14 @@ export default function WorkExperience({ experience, setExperience }) {
             id="newExpCompany"
             value={newCompany}
             onChange={(e) => setNewCompany(e.target.value)}
+            required
+          />
+          <label htmlFor="newExpRole">Role: </label>
+          <input
+            type="text"
+            id="newExpRole"
+            value={newRole}
+            onChange={(e) => setNewRole(e.target.value)}
             required
           />
           <label htmlFor="newExpYearFrom">From (year)</label>

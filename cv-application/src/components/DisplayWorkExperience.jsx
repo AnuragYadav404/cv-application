@@ -7,6 +7,7 @@ export default function DisplayWorkExperience({ experience }) {
                 {experience.map((exp) => {
                    return  (<li key={exp.id}>
                         <b>Company: {exp.companyName} </b>
+                        <b>Role: {exp.role}</b>
                         <b>From: {exp["yearFrom"]} </b>
                         <b>To: {exp["yearTo"]} </b>
                     </li>)

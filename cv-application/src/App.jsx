@@ -42,18 +42,21 @@ function App() {
 let initialWorkExp = [
   {
     id: "Microsoft@20242026",
+    role: "Sde",
     companyName: "Microsoft",
     yearFrom: 2024,
     yearTo: 2026,
   },
   {
     id: "Google@20262028",
+    role: "Sde-2",
     companyName: "Google",
     yearFrom: 2026,
     yearTo: 2028,
   },
   {
     id: "Tesla@20282030",
+    role: "Sde-2",
     companyName: "Tesla",
     yearFrom: 2028,
     yearTo: 2030,
