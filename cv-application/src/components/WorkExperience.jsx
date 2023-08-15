@@ -8,49 +8,62 @@ export default function WorkExperience({ experience, setExperience }) {
   const [newYearFrom, setNewYearFrom] = useState("");
   const [newYearTo, setNewYearTo] = useState("");
 
-  function handleCompanyNameChange(newName, id) {
-    setExperience(
-      experience.map((exp) => {
-        if (exp.id === id) {
-          return {
-            ...exp,
-            companyName: newName,
-          };
-        } else {
-          return exp;
-        }
-      })
-    );
-  }
+  // function handleCompanyNameChange(newName, id) {
+  //   setExperience(
+  //     experience.map((exp) => {
+  //       if (exp.id === id) {
+  //         return {
+  //           ...exp,
+  //           companyName: newName,
+  //         };
+  //       } else {
+  //         return exp;
+  //       }
+  //     })
+  //   );
+  // }
 
-  function handleRoleChange(newRole, id) {
-    setExperience(
-      experience.map((exp) => {
-        if (exp.id === id) {
-          return {
-            ...exp,
-            role: newRole,
-          };
-        } else {
-          return exp;
-        }
-      })
-    );
-  }
+  // function handleRoleChange(newRole, id) {
+  //   setExperience(
+  //     experience.map((exp) => {
+  //       if (exp.id === id) {
+  //         return {
+  //           ...exp,
+  //           role: newRole,
+  //         };
+  //       } else {
+  //         return exp;
+  //       }
+  //     })
+  //   );
+  // }
 
-  function handleYearChange(property, newYear, id) {
-    setExperience(
-      experience.map((exp) => {
-        if (exp.id === id) {
-          return {
-            ...exp,
-            [property]: newYear,
-          };
-        } else {
-          return exp;
+  // function handleYearChange(property, newYear, id) {
+  //   setExperience(
+  //     experience.map((exp) => {
+  //       if (exp.id === id) {
+  //         return {
+  //           ...exp,
+  //           [property]: newYear,
+  //         };
+  //       } else {
+  //         return exp;
+  //       }
+  //     })
+  //   );
+  // }
+
+  function handleExpChange(property, newValue, id) {
+    setExperience(experience.map((exp) => {
+      if(exp.id === id) {
+        return {
+          ...exp,
+          [property]: newValue
         }
-      })
-    );
+      }else {
+        return exp
+      }
+    }))
   }
 
   function handleExperienceDelete(id) {
@@ -70,8 +83,8 @@ export default function WorkExperience({ experience, setExperience }) {
         id: newId,
         companyName: newCompany,
         role: newRole,
-        yearFrom: newYearFrom,
-        yearTo: newYearTo,
+        "yearFrom": newYearFrom,
+        "yearTo": newYearTo,
       };
       setExperience([...experience, newExp]);
       setNewCompany("");
@@ -94,7 +107,7 @@ export default function WorkExperience({ experience, setExperience }) {
                 placeholder="Company Name"
                 value={exp.companyName}
                 onChange={(e) =>
-                  handleCompanyNameChange(e.target.value, exp.id)
+                  handleExpChange("companyName", e.target.value, exp.id)
                 }
               />
               <label htmlFor={exp.id + exp.role}>Role: </label>
@@ -103,7 +116,7 @@ export default function WorkExperience({ experience, setExperience }) {
                 id={exp.id + exp.role}
                 placeholder="Role"
                 value={exp.role}
-                onChange={(e) => handleRoleChange(e.target.value, exp.id)}
+                onChange={(e) => handleExpChange("role", e.target.value, exp.id)}
               />
               <label htmlFor={exp.id + exp["yearFrom"]}>From: </label>
               <input
@@ -112,7 +125,7 @@ export default function WorkExperience({ experience, setExperience }) {
                 placeholder="Start Year"
                 value={exp.yearFrom}
                 onChange={(e) =>
-                  handleYearChange("yearFrom", e.target.value, exp.id)
+                  handleExpChange("yearFrom", e.target.value, exp.id)
                 }
               />
               <label htmlFor={exp.id + exp["yearTo"]}>To: </label>
@@ -122,7 +135,7 @@ export default function WorkExperience({ experience, setExperience }) {
                 placeholder="End Year"
                 value={exp.yearTo}
                 onChange={(e) =>
-                  handleYearChange("yearTo", e.target.value, exp.id)
+                  handleExpChange("yearTo", e.target.value, exp.id)
                 }
               />
               <button onClick={() => handleExperienceDelete(exp.id)}>
