@@ -16,6 +16,10 @@ export default function ExperienceDetails({
   const [newYearTo, setNewYearTo] = useState("");
 
   // console.log(experience);
+  let cardLabel = "Work Experience";
+  if(experienceName === 'EducationDetails') {
+    cardLabel = "Education Details"
+  }
 
   function handleExpChange(property, newValue, id) {
     setExperience(
@@ -62,6 +66,7 @@ export default function ExperienceDetails({
   return (
     <div className={experienceName}>
       <ul className={experienceName + "List"}>
+        <h2>{cardLabel}</h2>
         {experience.map((exp) => {
           return (
             <li key={exp.id}>
@@ -110,7 +115,7 @@ export default function ExperienceDetails({
           );
         })}
         <li key={"newExp"}>
-          Add Experience:
+          <h3>Add Experience:</h3>
           <label htmlFor="newExpTitle">{titleLabel}</label>
           <input
             type="text"

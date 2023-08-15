@@ -11,65 +11,134 @@ function App() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [currentAddress, setCurrentAddress] = useState("");
-  // const [experience, setExperience] = useState([]);
   const [work, setWork] = useState(initialWorkExp);
   const [education, setEducation] = useState(initialEducation);
-  // console.log("App education is : ", education)
   return (
-    <div className="mainDiv">
-      {/* PersonalDetails section */}
-      <PersonalDetailsForm
-        name={name}
-        setName={setName}
-        email={email}
-        setEmail={setEmail}
-        phone={phone}
-        setPhone={setPhone}
-        currentAddress={currentAddress}
-        setCurrentAddress={setCurrentAddress}
-      />
-      <DisplayPersonalDetails
-        name={name}
-        email={email}
-        phone={phone}
-        currentAddress={currentAddress}
-      />
-      <ExperienceDetails
-        experienceName="ExperienceDetails"
-        experience={work}
-        setExperience={setWork}
-        title={"companyName"}
-        titleLabel={"Company: "}
-        subtitle={"role"}
-        subtitleLabel={"Role: "}
-      />
-      <DisplayExperienceDetails
-        experienceName="ExperienceDetails"
-        experience={work}
-        title={"companyName"}
-        titleLabel={"Company: "}
-        subtitle={"role"}
-        subtitleLabel={"Role: "}
-      />
-
-      <ExperienceDetails
-        experienceName="EducationDetails"
-        experience={education}
-        setExperience={setEducation}
-        title={"instituteName"}
-        titleLabel={"Institute: "}
-        subtitle={"course"}
-        subtitleLabel={"Course: "}
-      />
-      <DisplayExperienceDetails
-        experienceName="EducationDetails"
-        experience={education}
-        title={"instituteName"}
-        titleLabel={"Institute: "}
-        subtitle={"course"}
-        subtitleLabel={"Course: "}
-      />
+    <div className="cvApp">
+      <div className="cvForm">
+        <div className="header">
+          <h1>CV Maker</h1>
+        </div>
+        <div className="personalData">
+          <PersonalDetailsForm
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            phone={phone}
+            setPhone={setPhone}
+            currentAddress={currentAddress}
+            setCurrentAddress={setCurrentAddress}
+          />
+        </div>
+        <div className="workData">
+          <ExperienceDetails
+            experienceName="WorkDetails"
+            experience={work}
+            setExperience={setWork}
+            title={"companyName"}
+            titleLabel={"Company: "}
+            subtitle={"role"}
+            subtitleLabel={"Role: "}
+          />
+        </div>
+        <div className="educationData">
+          <ExperienceDetails
+            experienceName="EducationDetails"
+            experience={education}
+            setExperience={setEducation}
+            title={"instituteName"}
+            titleLabel={"Institute: "}
+            subtitle={"course"}
+            subtitleLabel={"Course: "}
+          />
+        </div>
+      </div>
+      <div className="cvPreview">
+        <div className="personalDataPreview">
+          <DisplayPersonalDetails
+            name={name}
+            email={email}
+            phone={phone}
+            currentAddress={currentAddress}
+          />
+        </div>
+        <div className="workDataPreview">
+          <DisplayExperienceDetails
+            experienceName="WorkDetails"
+            experience={work}
+            title={"companyName"}
+            titleLabel={"Company: "}
+            subtitle={"role"}
+            subtitleLabel={"Role: "}
+          />
+        </div>
+        <div className="educationDataPreview">
+          <DisplayExperienceDetails
+            experienceName="EducationDetails"
+            experience={education}
+            title={"instituteName"}
+            titleLabel={"Institute: "}
+            subtitle={"course"}
+            subtitleLabel={"Course: "}
+          />
+        </div>
+      </div>
     </div>
+    // <div className="mainDiv">
+    //   {/* PersonalDetails section */}
+    //   <PersonalDetailsForm
+    //     name={name}
+    //     setName={setName}
+    //     email={email}
+    //     setEmail={setEmail}
+    //     phone={phone}
+    //     setPhone={setPhone}
+    //     currentAddress={currentAddress}
+    //     setCurrentAddress={setCurrentAddress}
+    //   />
+    //   <DisplayPersonalDetails
+    //     name={name}
+    //     email={email}
+    //     phone={phone}
+    //     currentAddress={currentAddress}
+    //   />
+    //   <ExperienceDetails
+    //     experienceName="ExperienceDetails"
+    //     experience={work}
+    //     setExperience={setWork}
+    //     title={"companyName"}
+    //     titleLabel={"Company: "}
+    //     subtitle={"role"}
+    //     subtitleLabel={"Role: "}
+    //   />
+    //   <DisplayExperienceDetails
+    //     experienceName="ExperienceDetails"
+    //     experience={work}
+    //     title={"companyName"}
+    //     titleLabel={"Company: "}
+    //     subtitle={"role"}
+    //     subtitleLabel={"Role: "}
+    //   />
+
+    //   <ExperienceDetails
+    //     experienceName="EducationDetails"
+    //     experience={education}
+    //     setExperience={setEducation}
+    //     title={"instituteName"}
+    //     titleLabel={"Institute: "}
+    //     subtitle={"course"}
+    //     subtitleLabel={"Course: "}
+    //   />
+    //   <DisplayExperienceDetails
+    //     experienceName="EducationDetails"
+    //     experience={education}
+    //     title={"instituteName"}
+    //     titleLabel={"Institute: "}
+    //     subtitle={"course"}
+    //     subtitleLabel={"Course: "}
+    //   />
+    // </div>
   );
 }
 

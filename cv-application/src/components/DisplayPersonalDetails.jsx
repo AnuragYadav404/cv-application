@@ -7,12 +7,17 @@ export default function DisplayPersonalDetails({
   phone,
   currentAddress,
 }) {
+
   return (
-    <div className="personalDetails">
-      <b>Name: {name}</b>
-      <b>Email: {email}</b>
-      <b>Contact-Number: {phone}</b>
-      <b>Current-Address: {currentAddress}</b>
+    <div className="personalDetailsDisplay">
+      <div className="headerName">
+        <h2>{name}</h2>
+      </div>
+      <div className="headerDetails">
+        <b>|Email: {email}|</b>
+        <b>|Contact-Number: {phone}|</b>
+        <b>|Current-Address: {currentAddress}|</b>
+      </div>
     </div>
   );
 }
