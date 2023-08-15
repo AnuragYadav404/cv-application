@@ -6,6 +6,7 @@ import WorkExperience from "./components/WorkExperience";
 import DisplayWorkExperience from "./components/DisplayWorkExperience";
 // import { Fragment } from "react";
 import ExperienceDetails from "./components/ExperienceDetails";
+import DisplayExperienceDetails from "./components/DisplayExperienceDetails";
 
 function App() {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ function App() {
   // const [experience, setExperience] = useState([]);
   const [experience, setExperience] = useState(initialWorkExp);
   const [education, setEducation] = useState(initialEducation)
-  console.log("App education is : ", education)
+  // console.log("App education is : ", education)
   return (
     <div className="mainDiv">
       {/* PersonalDetails section */}
@@ -38,6 +39,7 @@ function App() {
       <WorkExperience experience={experience} setExperience={setExperience} />
       <DisplayWorkExperience experience={experience} />
       <ExperienceDetails experienceName="EducationDetails" experience={education} setExperience={setEducation} title={"instituteName"} titleLabel={"Institute: "} subtitle={"course"} subtitleLabel={"Course: "}/>
+      <DisplayExperienceDetails experienceName="EducationDetails" experience={education} title={"instituteName"} titleLabel={"Institute: "} subtitle={"course"} subtitleLabel={"Course: "}/>
     </div>
   );
 }

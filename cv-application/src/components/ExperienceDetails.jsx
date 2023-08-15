@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export default function ExperienceDetails({
   experienceName,
@@ -14,7 +15,7 @@ export default function ExperienceDetails({
   const [newYearFrom, setNewYearFrom] = useState("");
   const [newYearTo, setNewYearTo] = useState("");
 
-  console.log(experience);
+  // console.log(experience);
 
   function handleExpChange(property, newValue, id) {
     setExperience(
