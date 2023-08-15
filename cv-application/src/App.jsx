@@ -3,7 +3,8 @@ import "./App.css";
 import PersonalDetailsForm from "./components/PersonalDetails";
 import DisplayPersonalDetails from "./components/DisplayPersonalDetails";
 import WorkExperience from "./components/WorkExperience";
-import { Fragment } from "react";
+import DisplayWorkExperience from "./components/DisplayWorkExperience";
+// import { Fragment } from "react";
 
 function App() {
   const [name, setName] = useState("");
@@ -11,6 +12,7 @@ function App() {
   const [phone, setPhone] = useState("");
   const [currentAddress, setCurrentAddress] = useState("");
   // const [experience, setExperience] = useState([]);
+  const [experience, setExperience] = useState(initialWorkExp);
 
   return (
     <div className="mainDiv">
@@ -25,10 +27,37 @@ function App() {
         currentAddress={currentAddress}
         setCurrentAddress={setCurrentAddress}
       />
-      <DisplayPersonalDetails name={name} email={email} phone={phone} currentAddress={currentAddress} />
-      <WorkExperience />
+      <DisplayPersonalDetails
+        name={name}
+        email={email}
+        phone={phone}
+        currentAddress={currentAddress}
+      />
+      <WorkExperience experience={experience} setExperience={setExperience} />
+      <DisplayWorkExperience experience={experience} />
     </div>
   );
 }
+
+let initialWorkExp = [
+  {
+    id: "Microsoft@20242026",
+    companyName: "Microsoft",
+    yearFrom: 2024,
+    yearTo: 2026,
+  },
+  {
+    id: "Google@20262028",
+    companyName: "Google",
+    yearFrom: 2026,
+    yearTo: 2028,
+  },
+  {
+    id: "Tesla@20282030",
+    companyName: "Tesla",
+    yearFrom: 2028,
+    yearTo: 2030,
+  },
+];
 
 export default App;
