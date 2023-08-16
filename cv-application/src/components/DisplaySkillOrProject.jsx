@@ -13,7 +13,7 @@ export default function DisplaySkillOrProject({state, headLabel}) {
                                 <ul>
                                     {values.map((value) => {
                                         return (
-                                            <li key={value}>{value}</li>
+                                            <li key={value} className="special">{value}</li>
                                         )
                                     })}
                                 </ul>

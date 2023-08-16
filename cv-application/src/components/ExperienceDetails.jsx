@@ -135,7 +135,7 @@ export default function ExperienceDetails({
           );
         })}
         <li key={"newExp"}>
-          <h3>Add Experience:</h3>
+          <h3>Add {cardLabel}</h3>
           <label htmlFor="newExpTitle">{titleLabel}</label>
           <input
             type="text"
