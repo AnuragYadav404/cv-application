@@ -15,6 +15,7 @@ export default function ExperienceDetails({
   const [newYearFrom, setNewYearFrom] = useState("");
   const [newYearTo, setNewYearTo] = useState("");
   const [newLoc, setNewLoc] = useState("");
+  const [desc, setDesc] = useState("");
   // console.log(experience);
   let cardLabel = "Work Experience";
   if(experienceName === 'EducationDetails') {
@@ -58,6 +59,7 @@ export default function ExperienceDetails({
         "yearFrom": newYearFrom,
         "yearTo": newYearTo,
         "location": newLoc,
+        "desc" : desc
       };
       setExperience([...experience, newExp]);
       setNewTitle("");
@@ -65,6 +67,7 @@ export default function ExperienceDetails({
       setNewYearFrom("");
       setNewYearTo("");
       setNewLoc("");
+      setDesc("");
     }
   }
 
@@ -123,6 +126,8 @@ export default function ExperienceDetails({
                   handleExpChange("location", e.target.value, exp.id)
                 }
               />
+              <label htmlFor={exp.id + "desc"}>Description</label>
+              <textarea  id={exp.id + "desc"} cols="30" rows="10" value={exp["desc"]} onChange={(e) => handleExpChange("desc", e.target.value, exp.id)}></textarea>
               <button onClick={() => handleExperienceDelete(exp.id)}>
                 Delete
               </button>
@@ -171,6 +176,8 @@ export default function ExperienceDetails({
             onChange={(e) => setNewLoc(e.target.value)}
             required
           />
+          <label htmlFor="newDesc">Description: </label>
+          <textarea id="newDesc" cols="30" rows="10" placeholder="One line points only, Start with '-'" value={desc} onChange={(e) => setDesc(e.target.value)}></textarea>
           <button onClick={addNewExperience}>Add</button>
         </li>
       </ul>

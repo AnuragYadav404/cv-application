@@ -37,13 +37,13 @@ export default function PersonalDetailsForm({
         onChange={(e) => setPhone(e.target.value)}
         placeholder="Enter contact number"
       />
-      <label htmlFor="personalAddress">Current address:</label>
+      <label htmlFor="personalAddress">Current address</label>
       <input
         id="personalAddress"
         type="text"
         value={currentAddress}
         onChange={(e) => setCurrentAddress(e.target.value)}
-        placeholder="Enter current address"
+        placeholder="State, Country"
       />
     </div>
   );

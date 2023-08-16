@@ -63,16 +63,6 @@ function App() {
             currentAddress={currentAddress}
           />
         </div>
-        <div className="workDataPreview" key={"WorkDetails"}>
-          <DisplayExperienceDetails
-            experienceName="WorkDetails"
-            experience={work}
-            title={"companyName"}
-            titleLabel={"Company: "}
-            subtitle={"role"}
-            subtitleLabel={"Role: "}
-          />
-        </div>
         <div className="educationDataPreview" key={"EducationDetails"}>
           <DisplayExperienceDetails
             experienceName="EducationDetails"
@@ -81,6 +71,16 @@ function App() {
             titleLabel={"Institute: "}
             subtitle={"course"}
             subtitleLabel={"Course: "}
+          />
+        </div>
+        <div className="workDataPreview" key={"WorkDetails"}>
+          <DisplayExperienceDetails
+            experienceName="WorkDetails"
+            experience={work}
+            title={"companyName"}
+            titleLabel={"Company: "}
+            subtitle={"role"}
+            subtitleLabel={"Role: "}
           />
         </div>
       </div>

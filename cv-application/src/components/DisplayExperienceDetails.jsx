@@ -9,23 +9,30 @@ export default function DisplayExperienceDetails({experienceName, experience, ti
             <ul>
                {experience.map((exp) => {
                     return(
-                        <li key={exp.id}>
+                        <li key={exp.id} className="expSection">
                             <div className="expSectionOne">
                                 <b>{titleLabel} {exp[title]} </b>
                                 <b>Location: {exp["location"]}</b>
                             </div>
                             <div className="expSectionTwo">
-                                <b>{subtitleLabel} {exp[subtitle]} </b>
+                                <p>{subtitleLabel} {exp[subtitle]} </p>
                                 <div className="duration">
-                                    <b>Duration: {exp["yearFrom"]}-{exp["yearTo"]}</b>
+                                    <p>Duration: {exp["yearFrom"]}-{exp["yearTo"]}</p>
                                 </div>
                             </div>
+                            { exp["desc"].length>0 && <div className="expSectionThree">
+                                <ol>
+                                {exp["desc"].split("\n").map((point, index) => (
+                                    <li key={index}>{point}</li>
+                                ))}
+                                </ol> 
+                            </div>}
 
                         </li>
                     )
                })} 
             </ul>
 
-        </div>
+            </div>
     )
 }
