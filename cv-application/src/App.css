@@ -38,12 +38,12 @@ li {
 }
 
 
-.WorkDetails, .EducationDetails {
+.WorkDetails, .EducationDetails, .skillsForm {
   display: flex;
   flex-direction: column;
 }
 
-.personalDetails, .WorkDetailsList, .EducationDetailsList   {
+.personalDetails, .WorkDetailsList, .EducationDetailsList , .skillsFormList  {
   margin-top: 8px;
   color: white;
   display: flex;
@@ -57,7 +57,7 @@ li {
 
 
 
-.WorkDetailsList li, .EducationDetailsList li {
+.WorkDetailsList li, .EducationDetailsList li, .skillsFormList li {
   display: flex;
   flex-direction: column;
   margin: 8px;
@@ -67,7 +67,7 @@ li {
   border: 4px solid silver;
 }
 
-.WorkDetailsList li input, .EducationDetailsList li input, .personalDetails input, .WorkDetailsList li textarea, .EducationDetailsList li textarea {
+.WorkDetailsList li input, .EducationDetailsList li input, .skillsFormList li input, .skillsFormList li textarea, .skillsFormList li button ,.personalDetails input, .WorkDetailsList li textarea, .EducationDetailsList li textarea {
   background-color: black;
   color: white;
   padding: 8px;
@@ -149,4 +149,9 @@ li {
 .expSectionTwo p, .duration p {
   margin-top: 2px;
   margin-bottom: 2px;
+}
+
+.skillDisplaySection {
+  display: flex;
+  padding: 2px;
 }

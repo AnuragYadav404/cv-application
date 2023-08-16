@@ -5,6 +5,8 @@ import DisplayPersonalDetails from "./components/DisplayPersonalDetails";
 // import { Fragment } from "react";
 import ExperienceDetails from "./components/ExperienceDetails";
 import DisplayExperienceDetails from "./components/DisplayExperienceDetails";
+import SkillsDetails from "./components/SkillsDetails";
+import DisplaySkillsDetails from "./components/DisplaySkillDetails";
 
 function App() {
   const [name, setName] = useState("");
@@ -13,6 +15,8 @@ function App() {
   const [currentAddress, setCurrentAddress] = useState("");
   const [work, setWork] = useState([]);
   const [education, setEducation] = useState([]);
+
+  const [skills, setNewSkills] = useState(initialSkills);
   return (
     <div className="cvApp">
       <div className="cvForm">
@@ -30,6 +34,9 @@ function App() {
             currentAddress={currentAddress}
             setCurrentAddress={setCurrentAddress}
           />
+        </div>
+        <div className="SkillsData">
+          <SkillsDetails skillsState={skills} setSkillsState={setNewSkills}/>
         </div>
         <div className="workData">
           <ExperienceDetails
@@ -73,6 +80,9 @@ function App() {
             subtitleLabel={"Course: "}
           />
         </div>
+        <div className="skillsDataPreview">
+          <DisplaySkillsDetails skills={skills}/>
+        </div>
         <div className="workDataPreview" key={"WorkDetails"}>
           <DisplayExperienceDetails
             experienceName="WorkDetails"
@@ -87,5 +97,18 @@ function App() {
     </div>
   );
 }
+
+let initialSkills = [
+  {
+    id: "language",
+    "type": "language",
+    "value" : "C++, Java, Go, Js"
+  },
+  {
+    id: "frameworks",
+    "type": "frameworks",
+    "value" : "React, Node, Django"
+  }
+]
 
 export default App;
