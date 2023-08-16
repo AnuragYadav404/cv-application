@@ -125,7 +125,7 @@ li {
   border: 4px solid silver;
 }
 
-.expSectionTwo{
+.expSectionTwo, .expSectionOne{
   display: flex;
   justify-content: space-between;
 }

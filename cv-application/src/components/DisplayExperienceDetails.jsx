@@ -12,6 +12,7 @@ export default function DisplayExperienceDetails({experienceName, experience, ti
                         <li key={exp.id}>
                             <div className="expSectionOne">
                                 <b>{titleLabel} {exp[title]} </b>
+                                <b>Location: {exp["location"]}</b>
                             </div>
                             <div className="expSectionTwo">
                                 <b>{subtitleLabel} {exp[subtitle]} </b>

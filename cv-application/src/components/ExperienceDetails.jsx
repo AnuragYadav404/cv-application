@@ -14,12 +14,14 @@ export default function ExperienceDetails({
   const [newSubtitle, setNewSubtitle] = useState("");
   const [newYearFrom, setNewYearFrom] = useState("");
   const [newYearTo, setNewYearTo] = useState("");
-
+  const [newLoc, setNewLoc] = useState("");
   // console.log(experience);
   let cardLabel = "Work Experience";
   if(experienceName === 'EducationDetails') {
     cardLabel = "Education Details"
   }
+
+  // 
 
   function handleExpChange(property, newValue, id) {
     setExperience(
@@ -45,21 +47,24 @@ export default function ExperienceDetails({
       newTitle.length > 0 &&
       newYearFrom.length > 0 &&
       newYearTo.length > 0 &&
-      newSubtitle.length > 0
+      newSubtitle.length > 0 &&
+      newLoc.length>0
     ) {
       let newId = newTitle + "@" + newYearFrom + newYearTo;
       let newExp = {
         id: newId,
         [title]: newTitle,
         [subtitle]: newSubtitle,
-        yearFrom: newYearFrom,
-        yearTo: newYearTo,
+        "yearFrom": newYearFrom,
+        "yearTo": newYearTo,
+        "location": newLoc,
       };
       setExperience([...experience, newExp]);
       setNewTitle("");
       setNewSubtitle("");
       setNewYearFrom("");
       setNewYearTo("");
+      setNewLoc("");
     }
   }
 
@@ -108,6 +113,16 @@ export default function ExperienceDetails({
                   handleExpChange("yearTo", e.target.value, exp.id)
                 }
               />
+              <label htmlFor={exp.id + exp["location"]}>Location: </label>
+              <input
+                type="text"
+                id={exp.id + exp["location"]}
+                placeholder="Location (State, City)"
+                value={exp["location"]}
+                onChange={(e) =>
+                  handleExpChange("location", e.target.value, exp.id)
+                }
+              />
               <button onClick={() => handleExperienceDelete(exp.id)}>
                 Delete
               </button>
@@ -146,6 +161,14 @@ export default function ExperienceDetails({
             id="newExpYearTo"
             value={newYearTo}
             onChange={(e) => setNewYearTo(e.target.value)}
+            required
+          />
+          <label htmlFor="newLoc">Location: </label>
+          <input
+            type="text"
+            id="newLoc"
+            value={newLoc}
+            onChange={(e) => setNewLoc(e.target.value)}
             required
           />
           <button onClick={addNewExperience}>Add</button>
