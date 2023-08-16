@@ -9,6 +9,8 @@ import SkillsDetails from "./components/SkillsDetails";
 import DisplaySkillsDetails from "./components/DisplaySkillDetails";
 import SkillOrProject from "./components/SkillOrProject";
 import DisplaySkillOrProject from "./components/DisplaySkillOrProject";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 function App() {
   const [name, setName] = useState("");
@@ -17,15 +19,38 @@ function App() {
   const [currentAddress, setCurrentAddress] = useState("");
   const [work, setWork] = useState([]);
   const [education, setEducation] = useState([]);
-  const [projects, setProjects] = useState([])
-
+  const [projects, setProjects] = useState([]);
   const [skills, setNewSkills] = useState([]);
+
+  const [loader, setLoader] = useState(false);
+
+  function handleDownload() {
+    const capture = document.querySelector('.cvPreview');
+    setLoader(true);
+    html2canvas(capture).then((canvas) => {
+      const imgData = canvas.toDataURL('img/png');
+      const doc = new jsPDF('p', 'mm', 'a4');
+      const cmpWidth = doc.internal.pageSize.getWidth();
+      const cmpHeight = doc.internal.pageSize.getHeight();
+      doc.addImage(imgData, 'PNG', 0, 0, cmpWidth, cmpHeight);
+      setLoader(false);
+      doc.save('resume.pdf');
+
+
+    }).catch((reason) => {
+      console.log(reason);
+    })
+  }
   return (
     <div className="cvApp">
       <div className="cvForm">
+        <button onClick={handleDownload} disabled={loader===true  }>
+          {loader ? "Downloading" : "download"}
+        </button>
         <div className="header">
           <h1>CV Maker</h1>
         </div>
+
         <div className="personalData">
           <PersonalDetailsForm
             name={name}
@@ -39,7 +64,11 @@ function App() {
           />
         </div>
         <div className="SkillsData">
-          <SkillOrProject inputState={skills} setInputState={setNewSkills} headLabel={'skills'}/>
+          <SkillOrProject
+            inputState={skills}
+            setInputState={setNewSkills}
+            headLabel={"skills"}
+          />
         </div>
         <div className="workData">
           <ExperienceDetails
@@ -64,7 +93,11 @@ function App() {
           />
         </div>
         <div className="ProjectData">
-          <SkillOrProject inputState={projects} setInputState={setProjects} headLabel={'project'}/>
+          <SkillOrProject
+            inputState={projects}
+            setInputState={setProjects}
+            headLabel={"project"}
+          />
         </div>
       </div>
       <div className="cvPreview">
@@ -88,7 +121,7 @@ function App() {
         </div>
         <div className="skillsDataPreview">
           {/* <DisplaySkillsDetails skills={skills}/> */}
-          <DisplaySkillOrProject state={skills} headLabel={"skill"}/>
+          <DisplaySkillOrProject state={skills} headLabel={"skill"} />
         </div>
         <div className="workDataPreview" key={"WorkDetails"}>
           <DisplayExperienceDetails
@@ -102,13 +135,11 @@ function App() {
         </div>
         <div className="projectsDataPreview">
           {/* <DisplaySkillsDetails skills={skills}/> */}
-          <DisplaySkillOrProject state={projects} headLabel={"project"}/>
+          <DisplaySkillOrProject state={projects} headLabel={"project"} />
         </div>
       </div>
     </div>
   );
 }
-
-
 
 export default App;
