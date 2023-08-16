@@ -19,7 +19,7 @@ function App() {
   const [education, setEducation] = useState([]);
   const [projects, setProjects] = useState([])
 
-  const [skills, setNewSkills] = useState(initialSkills);
+  const [skills, setNewSkills] = useState([]);
   return (
     <div className="cvApp">
       <div className="cvForm">
@@ -109,17 +109,6 @@ function App() {
   );
 }
 
-let initialSkills = [
-  {
-    id: "language",
-    "name": "language",
-    "info" : "C++, Java, Go, Js"
-  },
-  {
-    id: "frameworks",
-    "name": "frameworks",
-    "info" : "React, Node, Django"
-  }
-]
+
 
 export default App;
