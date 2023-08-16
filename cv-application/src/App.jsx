@@ -7,6 +7,8 @@ import ExperienceDetails from "./components/ExperienceDetails";
 import DisplayExperienceDetails from "./components/DisplayExperienceDetails";
 import SkillsDetails from "./components/SkillsDetails";
 import DisplaySkillsDetails from "./components/DisplaySkillDetails";
+import SkillOrProject from "./components/SkillOrProject";
+import DisplaySkillOrProject from "./components/DisplaySkillOrProject";
 
 function App() {
   const [name, setName] = useState("");
@@ -15,6 +17,7 @@ function App() {
   const [currentAddress, setCurrentAddress] = useState("");
   const [work, setWork] = useState([]);
   const [education, setEducation] = useState([]);
+  const [projects, setProjects] = useState([])
 
   const [skills, setNewSkills] = useState(initialSkills);
   return (
@@ -36,7 +39,7 @@ function App() {
           />
         </div>
         <div className="SkillsData">
-          <SkillsDetails skillsState={skills} setSkillsState={setNewSkills}/>
+          <SkillOrProject inputState={skills} setInputState={setNewSkills} headLabel={'skills'}/>
         </div>
         <div className="workData">
           <ExperienceDetails
@@ -60,6 +63,9 @@ function App() {
             subtitleLabel={"Course: "}
           />
         </div>
+        <div className="ProjectData">
+          <SkillOrProject inputState={projects} setInputState={setProjects} headLabel={'project'}/>
+        </div>
       </div>
       <div className="cvPreview">
         <div className="personalDataPreview" key={"personalDetail"}>
@@ -81,7 +87,8 @@ function App() {
           />
         </div>
         <div className="skillsDataPreview">
-          <DisplaySkillsDetails skills={skills}/>
+          {/* <DisplaySkillsDetails skills={skills}/> */}
+          <DisplaySkillOrProject state={skills} headLabel={"skill"}/>
         </div>
         <div className="workDataPreview" key={"WorkDetails"}>
           <DisplayExperienceDetails
@@ -93,6 +100,10 @@ function App() {
             subtitleLabel={"Role: "}
           />
         </div>
+        <div className="projectsDataPreview">
+          {/* <DisplaySkillsDetails skills={skills}/> */}
+          <DisplaySkillOrProject state={projects} headLabel={"project"}/>
+        </div>
       </div>
     </div>
   );
@@ -101,13 +112,13 @@ function App() {
 let initialSkills = [
   {
     id: "language",
-    "type": "language",
-    "value" : "C++, Java, Go, Js"
+    "name": "language",
+    "info" : "C++, Java, Go, Js"
   },
   {
     id: "frameworks",
-    "type": "frameworks",
-    "value" : "React, Node, Django"
+    "name": "frameworks",
+    "info" : "React, Node, Django"
   }
 ]
 
