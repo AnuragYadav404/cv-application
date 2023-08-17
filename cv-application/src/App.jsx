@@ -1,28 +1,101 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import PersonalDetailsForm from "./components/PersonalDetails";
 import DisplayPersonalDetails from "./components/DisplayPersonalDetails";
 // import { Fragment } from "react";
 import ExperienceDetails from "./components/ExperienceDetails";
 import DisplayExperienceDetails from "./components/DisplayExperienceDetails";
-import SkillsDetails from "./components/SkillsDetails";
-import DisplaySkillsDetails from "./components/DisplaySkillDetails";
 import SkillOrProject from "./components/SkillOrProject";
 import DisplaySkillOrProject from "./components/DisplaySkillOrProject";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
+
+
 function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [currentAddress, setCurrentAddress] = useState("");
-  const [work, setWork] = useState([]);
-  const [education, setEducation] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [skills, setNewSkills] = useState([]);
+  const [name, setName] = useState(getInitialName);
+  const [email, setEmail] = useState(getInitialEmail);
+  const [phone, setPhone] = useState(getInitialPhone);
+  const [currentAddress, setCurrentAddress] = useState(getInitialAddress);
+  const [work, setWork] = useState(getInitialWork);
+  const [education, setEducation] = useState(getInitialEducation);
+  const [projects, setProjects] = useState(getInitialProjects);
+  const [skills, setNewSkills] = useState(getInitialSkill);
 
   const [loader, setLoader] = useState(false);
+
+  function getInitialSkill() {
+    const storedskills = JSON.parse(localStorage.getItem('skills'));
+    return storedskills || []; 
+  }
+
+  function getInitialProjects() {
+    const storedproj = JSON.parse(localStorage.getItem('projects'));
+    return storedproj || [];
+  }
+
+  function getInitialEducation() {
+    const storedEdu = JSON.parse(localStorage.getItem('education'));
+    return storedEdu || [];
+  }
+
+  function getInitialWork() {
+    const storedWork = JSON.parse(localStorage.getItem('work'));
+    return storedWork || [];
+  }
+
+  function getInitialPhone() {
+    const storedPhone = JSON.parse(localStorage.getItem('phone'));
+    return storedPhone.length>0 ? storedPhone : "";
+  }
+
+  function getInitialEmail() {
+    const storedEmail = JSON.parse(localStorage.getItem('email'));
+    return storedEmail.length>0 ? storedEmail : "";
+  }
+
+  function getInitialAddress() {
+    const storedadd = JSON.parse(localStorage.getItem('address'));
+    return storedadd.length>0 ? storedadd : "";
+  }
+
+  function getInitialName() {
+    const storedName = JSON.parse(localStorage.getItem('name'));
+    return storedName.length>0 ? storedName : "";
+  }
+
+  useEffect(() => {
+    localStorage.setItem('skills', JSON.stringify(skills))
+  }, [skills])
+
+  useEffect(() => {
+    localStorage.setItem('projects', JSON.stringify(projects))
+  }, [projects])
+
+  useEffect(() => {
+    localStorage.setItem('education', JSON.stringify(education))
+  }, [education])
+
+  useEffect(() => {
+    localStorage.setItem('work', JSON.stringify(work))
+  }, [work])
+
+  useEffect(() => {
+    localStorage.setItem('phone', JSON.stringify(phone));
+  }, [phone]);
+
+  useEffect(() => {
+    localStorage.setItem('name', JSON.stringify(name));
+  }, [name]);
+
+  useEffect(() => {
+    localStorage.setItem('email', JSON.stringify(email));
+  }, [email]);
+
+  useEffect(() => {
+    localStorage.setItem('address', JSON.stringify(currentAddress));
+  }, [currentAddress])
+
 
   function handleDownload() {
     const capture = document.querySelector('.cvPreview');
