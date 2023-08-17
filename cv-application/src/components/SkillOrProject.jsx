@@ -4,7 +4,7 @@ export default function SkillOrProject({inputState, setInputState, headLabel}) {
 
     const [newHead, setNewHead] = useState('');
     const [newInfo, setNewInfo] = useState('');
-    console.log("input state is", inputState);
+    // console.log("input state is", inputState);
 
     function handleHeadChange(value, id) {
         setInputState(inputState.map((ele) => {

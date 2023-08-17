@@ -63,6 +63,17 @@ function App() {
             setCurrentAddress={setCurrentAddress}
           />
         </div>
+        <div className="educationData">
+          <ExperienceDetails
+            experienceName="EducationDetails"
+            experience={education}
+            setExperience={setEducation}
+            title={"instituteName"}
+            titleLabel={"Institute: "}
+            subtitle={"course"}
+            subtitleLabel={"Course: "}
+          />
+        </div>
         <div className="SkillsData">
           <SkillOrProject
             inputState={skills}
@@ -79,17 +90,6 @@ function App() {
             titleLabel={"Company: "}
             subtitle={"role"}
             subtitleLabel={"Role: "}
-          />
-        </div>
-        <div className="educationData">
-          <ExperienceDetails
-            experienceName="EducationDetails"
-            experience={education}
-            setExperience={setEducation}
-            title={"instituteName"}
-            titleLabel={"Institute: "}
-            subtitle={"course"}
-            subtitleLabel={"Course: "}
           />
         </div>
         <div className="ProjectData">

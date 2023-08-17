@@ -33,7 +33,7 @@ li {
   ); */
   background-color: #2b4162;
   background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
-  
+
   flex-grow: 1;
   box-shadow: 0 5px 15px #5c360d, 0 -5px 30px #5c360d;
   color: white;
@@ -55,7 +55,8 @@ li {
 
 .WorkDetails,
 .EducationDetails,
-.skillsForm, .projectForm {
+.skillsForm,
+.projectForm {
   display: flex;
   flex-direction: column;
 }
@@ -63,7 +64,8 @@ li {
 .personalDetails,
 .WorkDetailsList,
 .EducationDetailsList,
-.skillsFormList, .projectFormList {
+.skillsFormList,
+.projectFormList {
   margin-top: 8px;
   color: white;
   display: flex;
@@ -78,7 +80,8 @@ li {
 
 .WorkDetailsList li,
 .EducationDetailsList li,
-.skillsFormList li, .projectFormList li{
+.skillsFormList li,
+.projectFormList li {
   display: flex;
   flex-direction: column;
   margin: 8px;
@@ -98,7 +101,7 @@ li {
 .projectFormList li button,
 .personalDetails input,
 .WorkDetailsList li textarea,
-.EducationDetailsList li textarea{
+.EducationDetailsList li textarea {
   background-color: black;
   color: white;
   padding: 8px;
@@ -135,11 +138,6 @@ li {
   gap: 2px;
 }
 
-.displayWorkDetails,
-.displayEducationDetails {
-  /* border: 1px solid silver; */
-  /* border-radius: 20px; */
-}
 .displayWorkDetails ul,
 .displayEducationDetails ul {
   display: flex;
@@ -147,7 +145,8 @@ li {
 }
 
 .displayWorkDetails ul li,
-.displayEducationDetails ul li, .displayproject ul li {
+.displayEducationDetails ul li,
+.displayproject ul li {
   display: flex;
   flex-direction: column;
   margin: 8px;
@@ -195,13 +194,13 @@ li {
   padding: 8px;
   margin: 8px;
   border-radius: 10px;
-  
+
   box-shadow: none;
   border: 2px solid silver;
 }
 
 .cvForm button {
-  background-color: #4D329D;
+  background-color: #4d329d;
   color: white;
   margin: 8px;
   padding: 8px;
@@ -209,7 +208,7 @@ li {
   border: 3px solid blue;
 }
 
-.displayskill h3{
+.displayskill h3 {
   margin: 0px;
 }
 
@@ -237,7 +236,7 @@ li {
   .cvPreview {
     min-width: 60vw;
   }
-  
+
   /* Additional styles for other elements if needed */
 }
 
