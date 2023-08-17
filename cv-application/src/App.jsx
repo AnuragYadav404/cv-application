@@ -10,8 +10,6 @@ import DisplaySkillOrProject from "./components/DisplaySkillOrProject";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-
-
 function App() {
   const [name, setName] = useState(getInitialName);
   const [email, setEmail] = useState(getInitialEmail);
@@ -24,102 +22,114 @@ function App() {
 
   const [loader, setLoader] = useState(false);
 
+  function handleClear() {
+    setName("");
+    setEmail("");
+    setPhone("");
+    setCurrentAddress("");
+    setWork([]);
+    setEducation([]);
+    setProjects([]);
+    setNewSkills([]);
+  }
+
   function getInitialSkill() {
-    const storedskills = JSON.parse(localStorage.getItem('skills'));
-    return storedskills || []; 
+    const storedskills = JSON.parse(localStorage.getItem("skills"));
+    return storedskills || [];
   }
 
   function getInitialProjects() {
-    const storedproj = JSON.parse(localStorage.getItem('projects'));
+    const storedproj = JSON.parse(localStorage.getItem("projects"));
     return storedproj || [];
   }
 
   function getInitialEducation() {
-    const storedEdu = JSON.parse(localStorage.getItem('education'));
+    const storedEdu = JSON.parse(localStorage.getItem("education"));
     return storedEdu || [];
   }
 
   function getInitialWork() {
-    const storedWork = JSON.parse(localStorage.getItem('work'));
+    const storedWork = JSON.parse(localStorage.getItem("work"));
     return storedWork || [];
   }
 
   function getInitialPhone() {
-    const storedPhone = JSON.parse(localStorage.getItem('phone'));
-    return storedPhone.length>0 ? storedPhone : "";
+    const storedPhone = JSON.parse(localStorage.getItem("phone"));
+    return storedPhone.length > 0 ? storedPhone : "";
   }
 
   function getInitialEmail() {
-    const storedEmail = JSON.parse(localStorage.getItem('email'));
-    return storedEmail.length>0 ? storedEmail : "";
+    const storedEmail = JSON.parse(localStorage.getItem("email"));
+    return storedEmail.length > 0 ? storedEmail : "";
   }
 
   function getInitialAddress() {
-    const storedadd = JSON.parse(localStorage.getItem('address'));
-    return storedadd.length>0 ? storedadd : "";
+    const storedadd = JSON.parse(localStorage.getItem("address"));
+    return storedadd.length > 0 ? storedadd : "";
   }
 
   function getInitialName() {
-    const storedName = JSON.parse(localStorage.getItem('name'));
-    return storedName.length>0 ? storedName : "";
+    const storedName = JSON.parse(localStorage.getItem("name"));
+    return storedName.length > 0 ? storedName : "";
   }
 
   useEffect(() => {
-    localStorage.setItem('skills', JSON.stringify(skills))
-  }, [skills])
+    localStorage.setItem("skills", JSON.stringify(skills));
+  }, [skills]);
 
   useEffect(() => {
-    localStorage.setItem('projects', JSON.stringify(projects))
-  }, [projects])
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }, [projects]);
 
   useEffect(() => {
-    localStorage.setItem('education', JSON.stringify(education))
-  }, [education])
+    localStorage.setItem("education", JSON.stringify(education));
+  }, [education]);
 
   useEffect(() => {
-    localStorage.setItem('work', JSON.stringify(work))
-  }, [work])
+    localStorage.setItem("work", JSON.stringify(work));
+  }, [work]);
 
   useEffect(() => {
-    localStorage.setItem('phone', JSON.stringify(phone));
+    localStorage.setItem("phone", JSON.stringify(phone));
   }, [phone]);
 
   useEffect(() => {
-    localStorage.setItem('name', JSON.stringify(name));
+    localStorage.setItem("name", JSON.stringify(name));
   }, [name]);
 
   useEffect(() => {
-    localStorage.setItem('email', JSON.stringify(email));
+    localStorage.setItem("email", JSON.stringify(email));
   }, [email]);
 
   useEffect(() => {
-    localStorage.setItem('address', JSON.stringify(currentAddress));
-  }, [currentAddress])
-
+    localStorage.setItem("address", JSON.stringify(currentAddress));
+  }, [currentAddress]);
 
   function handleDownload() {
-    const capture = document.querySelector('.cvPreview');
+    const capture = document.querySelector(".cvPreview");
     setLoader(true);
-    html2canvas(capture).then((canvas) => {
-      const imgData = canvas.toDataURL('img/png');
-      const doc = new jsPDF('p', 'mm', 'a4');
-      const cmpWidth = doc.internal.pageSize.getWidth();
-      const cmpHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(imgData, 'PNG', 0, 0, cmpWidth, cmpHeight);
-      setLoader(false);
-      doc.save('resume.pdf');
-
-
-    }).catch((reason) => {
-      console.log(reason);
-    })
+    html2canvas(capture)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL("img/png");
+        const doc = new jsPDF("p", "mm", "a4");
+        const cmpWidth = doc.internal.pageSize.getWidth();
+        const cmpHeight = doc.internal.pageSize.getHeight();
+        doc.addImage(imgData, "PNG", 0, 0, cmpWidth, cmpHeight);
+        setLoader(false);
+        doc.save("resume.pdf");
+      })
+      .catch((reason) => {
+        console.log(reason);
+      });
   }
+
   return (
     <div className="cvApp">
       <div className="cvForm">
-        <button onClick={handleDownload} disabled={loader===true  }>
-          {loader ? "Downloading" : "download"}
+        <button onClick={handleDownload} disabled={loader === true}>
+          {loader ? "Downloading" : "Download"}
         </button>
+        <button onClick={handleClear}>Clear Resume</button>
         <div className="header">
           <h1>CV Maker</h1>
         </div>
