@@ -55,22 +55,22 @@ function App() {
 
   function getInitialPhone() {
     const storedPhone = JSON.parse(localStorage.getItem("phone"));
-    return storedPhone.length > 0 ? storedPhone : "";
+    return  storedPhone || "";
   }
 
   function getInitialEmail() {
     const storedEmail = JSON.parse(localStorage.getItem("email"));
-    return storedEmail.length > 0 ? storedEmail : "";
+    return  storedEmail || "";
   }
 
   function getInitialAddress() {
     const storedadd = JSON.parse(localStorage.getItem("address"));
-    return storedadd.length > 0 ? storedadd : "";
+    return  storedadd || "";
   }
 
   function getInitialName() {
     const storedName = JSON.parse(localStorage.getItem("name"));
-    return storedName.length > 0 ? storedName : "";
+    return storedName || "";
   }
 
   useEffect(() => {
