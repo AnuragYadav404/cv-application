@@ -105,6 +105,8 @@ function App() {
     localStorage.setItem("address", JSON.stringify(currentAddress));
   }, [currentAddress]);
 
+
+  
   function handleDownload() {
     const capture = document.querySelector(".cvPreview");
     setLoader(true);
