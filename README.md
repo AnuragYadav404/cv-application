@@ -2,7 +2,7 @@
 
 CV Resume Builder is a web application that simplifies the process of creating and downloading professional resumes and CVs. It provides an intuitive interface for users to input their personal information, education details, work experience, skills, and projects, and then generates a downloadable PDF resume.
 
-![CV Resume Builder Screenshot](./src/assets/screenshot.png)
+![CV Resume Builder Screenshot](cv-application/src/assets/screenshot.png)
 
 ## Features
 
